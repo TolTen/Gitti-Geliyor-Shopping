@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const searchInput = document.getElementById("searchInput");
     const sortBy = document.getElementById("sortBy");
 
-    
     const categories = [...new Set(products.map(p => p.category))];
     categories.forEach(category => {
         const option = document.createElement("option");
@@ -18,8 +17,9 @@ document.addEventListener("DOMContentLoaded", function() {
         filteredProducts.forEach(product => {
             const productCard = document.createElement("div");
             productCard.classList.add("card");
+            productCard.setAttribute('data-id', product.id);
             productCard.innerHTML = `
-                <a href="product-detail.html?id=${product.id}">
+                <a href="Product-Details.html?id=${product.id}">
                     <img src="${product.thumbnail}" alt="${product.title}">
                 </a>
                 <h5>${product.title}</h5>
@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function() {
             productGrid.appendChild(productCard);
         });
     }
-
 
     function filterAndSortProducts() {
         let filteredProducts = products.filter(product => 
@@ -45,10 +44,22 @@ document.addEventListener("DOMContentLoaded", function() {
         renderProducts(filteredProducts);
     }
 
-
     categoryFilter.addEventListener("change", filterAndSortProducts);
     searchInput.addEventListener("input", filterAndSortProducts);
     sortBy.addEventListener("change", filterAndSortProducts);
 
     renderProducts(products);
+
+    function redirect() {
+        const productGrid = document.getElementById("productGrid");
+        productGrid.addEventListener("click", function(event) {
+            if (event.target.closest('.card')) {
+                const productId = event.target.closest('.card').getAttribute('data-id');  
+                window.location.href = `Product-Details.html?id=${productId}`;
+            }
+        });
+    }
+
+    // Call the redirect function to enable redirection on product click
+    redirect();
 });
