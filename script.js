@@ -18,16 +18,43 @@ document.addEventListener("DOMContentLoaded", function() {
             const productCard = document.createElement("div");
             productCard.classList.add("card");
             productCard.setAttribute('data-id', product.id);
+    
+            const ratingStars = getStars(product.rating);
+    
             productCard.innerHTML = `
                 <a href="Product-Details.html?id=${product.id}">
                     <img src="${product.thumbnail}" alt="${product.title}">
                 </a>
                 <h5>${product.title}</h5>
                 <p>$${product.price}</p>
+                <p class="rating">${ratingStars} (${product.rating.toFixed(1)})</p>
             `;
+    
             productGrid.appendChild(productCard);
         });
     }
+    
+    function getStars(rating) {
+        const fullStars = Math.floor(rating);
+        const halfStar = (rating - fullStars) >= 0.5;
+        const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+    
+        let starsHTML = '';
+    
+        for (let i = 0; i < fullStars; i++) {
+            starsHTML += '<span class="star full">★</span>';
+        }
+        if (halfStar) {
+            starsHTML += '<span class="star half">★</span>';
+        }
+        for (let i = 0; i < emptyStars; i++) {
+            starsHTML += '<span class="star empty">☆</span>';
+        }
+    
+        return `<span class="stars">${starsHTML}</span>`;
+    }
+    
+    
 
     function filterAndSortProducts() {
         let filteredProducts = products.filter(product => 

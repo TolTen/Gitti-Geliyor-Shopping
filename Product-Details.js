@@ -28,24 +28,87 @@ document.addEventListener('DOMContentLoaded', () => {
             aboutItemList.appendChild(li);
         });
 
-        const quantitySelect = document.getElementById('quantity');
+        let quantity = 1;
+        const quantityDisplay = document.getElementById('quantity-display');
         const totalPriceElement = document.getElementById('total-price');
 
-        quantitySelect.addEventListener('change', () => {
-            const quantity = parseInt(quantitySelect.value);
+        const updateTotalPrice = () => {
             const totalPrice = product.price * quantity;
             totalPriceElement.textContent = `Total: $${totalPrice.toFixed(2)}`;
+            quantityDisplay.textContent = quantity;
+        };
+
+        document.getElementById('increase-qty').addEventListener('click', () => {
+            quantity++;
+            updateTotalPrice();
         });
 
-        document.getElementById('add-to-cart-btn').addEventListener('click', () => {
-            addToCart(product.id, parseInt(quantitySelect.value));
+        document.getElementById('decrease-qty').addEventListener('click', () => {
+            if (quantity > 1) {
+                quantity--;
+                updateTotalPrice();
+            }
         });
+
+        updateTotalPrice(); 
 
         document.getElementById('go-to-cart-btn').addEventListener('click', () => {
-            window.location.href = 'Shopping-Cart.html';
+            window.location.href = 'shopping-cart.html';
         });
+        
+        
+        document.getElementById('add-to-cart-btn').addEventListener('click', () => {
+            addToCart(product.id, quantity);
+        });
+
+        const detailsContainer = document.querySelector('.product-details');
+
+        const reviewsTitle = document.createElement('h3');
+        reviewsTitle.textContent = 'Customer Reviews';
+        reviewsTitle.classList.add('reviews-title');
+        detailsContainer.appendChild(reviewsTitle);
+
+        product.reviews.forEach(review => {
+            const reviewDiv = document.createElement('div');
+            reviewDiv.classList.add('review');
+
+            const stars = getStars(review.rating);
+
+            reviewDiv.innerHTML = `
+                <div class="reviewer-name">${review.reviewerName}</div>
+                <div class="review-rating">${stars}</div>
+                <div class="review-comment">${review.comment}</div>
+                <div class="review-date">${new Date(review.date).toLocaleDateString()}</div>
+            `;
+
+            detailsContainer.appendChild(reviewDiv);
+        });
+
+        function getStars(rating) {
+            const fullStars = Math.floor(rating);
+            const halfStar = rating % 1 >= 0.25 && rating % 1 < 0.75;
+            const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+        
+            let starsHTML = '';
+        
+            for (let i = 0; i < fullStars; i++) {
+                starsHTML += '★';
+            }
+            if (halfStar) {
+                starsHTML += '⯨'; // veya alternatif olarak '½' ya da stilize ikon
+            }
+            for (let i = 0; i < emptyStars; i++) {
+                starsHTML += '☆';
+            }
+        
+            return starsHTML;
+        }
+        
+
+
     }
 });
+
 
 function addToCart(productId, quantity) {
     let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
