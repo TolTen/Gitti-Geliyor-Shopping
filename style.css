@@ -89,7 +89,7 @@ body {
 
 .star {
     font-style: normal;
-    color: #ccc; /* varsayılan boş yıldız */
+    color: #ccc; 
 }
 
 .star.full {
