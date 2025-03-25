@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 starsHTML += '★';
             }
             if (halfStar) {
-                starsHTML += '⯨'; // veya alternatif olarak '½' ya da stilize ikon
+                starsHTML += '⯨'; 
             }
             for (let i = 0; i < emptyStars; i++) {
                 starsHTML += '☆';
