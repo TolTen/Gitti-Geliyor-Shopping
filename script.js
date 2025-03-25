@@ -87,6 +87,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Call the redirect function to enable redirection on product click
+
     redirect();
 });
