@@ -29,7 +29,7 @@ body {
 }
 
 .product-image img:hover {
-    transform: scale(1.1); /* Fotoğraf üzerine gelindiğinde yakınlaşma efekti */
+    transform: scale(1.1); 
 }
 
 .product-details {
