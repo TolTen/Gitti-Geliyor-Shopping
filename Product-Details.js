@@ -123,3 +123,9 @@ function addToCart(productId, quantity) {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     alert('Product added to cart!');
 }
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get('id');
+
+if (productId) {
+  localStorage.setItem('lastViewedProductId', productId);
+}
