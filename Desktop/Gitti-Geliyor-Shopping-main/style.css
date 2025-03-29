@@ -1,0 +1,120 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    margin-top: 120px;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filters select, .filters input {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 30%;
+}
+
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    max-height: 200px; 
+    object-fit: contain;
+    border-bottom: 1px solid #ddd;
+}
+
+
+.card h5 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.card p {
+    font-size: 16px;
+    color: #555;
+}
+
+.stars {
+    display: inline-block;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.star {
+    font-style: normal;
+    color: #ccc; 
+}
+
+.star.full {
+    color: gold;
+}
+
+.star.half {
+    background: linear-gradient(to right, gold 50%, #ccc 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: white; 
+    padding: 10px;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  header .logo {
+    height: 80px; 
+    width: auto;
+  }
+

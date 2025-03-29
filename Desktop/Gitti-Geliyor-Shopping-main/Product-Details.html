@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="Product-Details.css">
+    <style>
+        .product-price {
+            color: red;
+        }
+        .quantity-container .price-container {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="Products.html">
+          <img src="GittiGeliyor.png" alt="GittiGeliyor Logo" class="logo">
+        </a>
+      </header>
+    <div class="product-container">
+        <div class="product-image">
+            <img id="product-image" src="" alt="Ürün Fotoğrafı">
+        </div>
+
+        <div class="product-details">
+            <h1 id="product-title"></h1>
+            <hr>
+            <span class="product-price">Price: <span id="product-price"></span></span>
+            <div class="product-info">
+                <h3>Product details</h3>
+                <p id="product-description"></p>
+            </div>
+
+            <hr>
+
+            <div class="about-item">
+                <h3>About this item</h3>
+                <ul id="about-item-list">
+                </ul>
+            </div>
+        </div>
+
+        <div class="add-to-cart-container">
+            <div class="price-container">
+                <span id="cart-price"></span>
+            </div>
+            <div class="quantity-container">
+                <div class="price-container">
+                    <span id="product-price-large"></span>
+                </div>
+                <div class="quantity-container">
+                    <button id="decrease-qty" class="qty-btn">-</button>
+                    <span id="quantity-display">1</span>
+                    <button id="increase-qty" class="qty-btn">+</button>
+                  </div>
+                  <span id="total-price">Total: $14.99</span>
+                  
+                </select>
+                <span id="total-price"></span>
+            </div>
+            <button class="add-btn" id="add-to-cart-btn">Add to Cart</button>
+            <hr>
+            <button class="go-to-cart-btn" id="go-to-cart-btn">Go to Cart</button>
+        </div>
+    </div>
+    <script src="Products.js"></script>
+    <script src="Product-Details.js"></script>
+    
+</body>
+</html>
